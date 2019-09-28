@@ -1,8 +1,5 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
-
 class ExampleTest extends TestCase
 {
     /**
@@ -21,36 +18,36 @@ class ExampleTest extends TestCase
 
     public function testApiBookIndex()
     {
-        $this->get('/books');
+        $response = $this->call('GET', '/books?api_token=dXdPaXhhaDZOZFlqU0d5ZVgwSW5yVmJCOTRUWlU1em8=');
 
-        $this->assertStatus(200);
+        $this->assertEquals(200, $response->status());
     }
 
     public function testApiBookShow()
     {
-        $this->get('/books/1');
+        $response = $this->call('GET', '/books/1?api_token=dXdPaXhhaDZOZFlqU0d5ZVgwSW5yVmJCOTRUWlU1em8=');
 
-        $this->assertStatus(200);
+        $this->assertEquals(200, $response->status());
     }
 
     public function testApiBookStore()
     {
-        $this->post('/books');
+        $response = $this->call('POST', '/books?api_token=dXdPaXhhaDZOZFlqU0d5ZVgwSW5yVmJCOTRUWlU1em8=');
 
-        $this->assertStatus(200);
+        $this->assertEquals(200, $response->status());
     }
 
     public function testApiBookUpdate()
     {
-        $this->put('/books/1');
+        $response = $this->call('PUT', '/books/1?api_token=dXdPaXhhaDZOZFlqU0d5ZVgwSW5yVmJCOTRUWlU1em8=');
 
-        $this->assertStatus(200);
+        $this->assertEquals(200, $response->status());
     }
 
     public function testApiBookDestroy()
     {
-        $this->delete('/books/1');
+        $response = $this->call('DELETE', '/books/1?api_token=dXdPaXhhaDZOZFlqU0d5ZVgwSW5yVmJCOTRUWlU1em8=');
 
-        $this->assertStatus(200);
+        $this->assertEquals(200, $response->status());
     }
 }
