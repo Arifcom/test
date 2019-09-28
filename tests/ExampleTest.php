@@ -18,4 +18,39 @@ class ExampleTest extends TestCase
             $this->app->version(), $this->response->getContent()
         );
     }
+
+    public function testApiBookIndex()
+    {
+        $this->get('/books');
+
+        $this->assertStatus(200);
+    }
+
+    public function testApiBookShow()
+    {
+        $this->get('/books/1');
+
+        $this->assertStatus(200);
+    }
+
+    public function testApiBookStore()
+    {
+        $this->post('/books');
+
+        $this->assertStatus(200);
+    }
+
+    public function testApiBookUpdate()
+    {
+        $this->put('/books/1');
+
+        $this->assertStatus(200);
+    }
+
+    public function testApiBookDestroy()
+    {
+        $this->delete('/books/1');
+
+        $this->assertStatus(200);
+    }
 }

@@ -20,3 +20,14 @@ $router->get('/key', function () {
     $string = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     return substr(str_shuffle($string), 0 , 32);
 });
+
+// users
+$router->post('/users/register', 'AuthController@register');
+$router->post('/users/login', 'AuthController@login');
+
+// books
+$router->get('/books', 'BookController@index');
+$router->get('/books/{id}', 'BookController@show');
+$router->post('/books', 'BookController@store');
+$router->put('/books/{id}', 'BookController@update');
+$router->delete('/books/{id}', 'BookController@destroy');
